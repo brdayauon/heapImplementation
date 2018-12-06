@@ -2,51 +2,38 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
 
     private T[] array;
     private int lastIndex;
-    private int size;
-
-    public class Heap {
-        Heap left;
-        Heap right;
-    }
+    private int sizeOfArray;
 
     public ArrayMaxHeap() {
         array = (T[]) (new Object[25]);
     }
 
     public void maxHeapify(T[] array, int index) {
-        if (index > size / 2)
-            return;
+        if (index > sizeOfArray / 2) return;
        int largest = index;
-        leftChildIndex = 2 * index;
-        rightChildIndex = (2 * index) + 1
-        if leftChildIndex <= heapSize AND array[ leftChildIndex] >array[largest]
-        largest = leftChildIndex
-        end if
-        if rightChildIndex <= heapSize AND array[ rightChildIndex] >array[largest]
-        largest = rightChildIndex
-        end if
-        if largest != index
-        swap(array[index], array[largest])
-        maxHeapify(array, largest)
-        end if
+       int leftChildIndex = 2 * index;
+       int rightChildIndex = (2 * index) + 1;
+
+        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[rightChildIndex]) < 0))
+            largest = leftChildIndex;
+        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[leftChildIndex]) > 0))
+        largest = rightChildIndex;
+        if (largest != index)
+        swap(index , largest);
+        maxHeapify(array, largest);
     }
 
-    private void maxUpHeap(array, index) {
-        while index > 1
-        AND array[
-        index / 2] <array[index]
-
-        swap(array[index / 2], array[index])
-
-        index = index / 2
-        end while
+    private void maxUpHeap(T[] array, int index) {
+        while (index > 1 && (array[index / 2].compareTo(array[index]) < 0)) {
+            swap( (index / 2),index);
+            index = index / 2;
+        }
     }
 
-     public void buildMaxHeap(array) {
-         size = number of items stored
-         for index from (size / 2) to 1
-         maxHeapify(array, index)
-         end for
+     public void buildMaxHeap(T[] array) {
+         int size = sizeOfArray;
+         for(int index = (size /2); index == 1; index-- )
+         maxHeapify(array, index);
      }
 
     /**
@@ -78,7 +65,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         }
     }
 
-    private void swap(int firstIndex, int secondIndex){
+    private void swap( int firstIndex, int secondIndex){
         T temp = array[firstIndex];
         array[firstIndex] = array [secondIndex];
         array[secondIndex] = temp;
