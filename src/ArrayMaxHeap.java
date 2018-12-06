@@ -54,15 +54,19 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * if the heap is empty before the operation, null.
      */
     public T removeMax() {
+        T max = arrayHeap[1];
         if(isEmpty()) return null;
+        else if (sizeOfArray == 1) {
+            arrayHeap[1] = null;
+            sizeOfArray--;
+        }
         else
         {
-            T max = arrayHeap[1];
             arrayHeap[1] = arrayHeap[sizeOfArray];
             sizeOfArray--;
             maxHeapify(arrayHeap, sizeOfArray);
-            return max;
         }
+        return max;
     }
 
     private void swap( int firstIndex, int secondIndex){
