@@ -14,9 +14,9 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
        int leftChildIndex = 2 * index;
        int rightChildIndex = (2 * index) + 1;
 
-        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[rightChildIndex]) < 0))
+        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[largest]) > 0))
             largest = leftChildIndex;
-        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[leftChildIndex]) > 0))
+        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[largest]) > 0))
         largest = rightChildIndex;
         if (largest != index)
         swap(index , largest);
@@ -57,10 +57,11 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         if(isEmpty()) return null;
         else
         {
-            arrayHeap[1] = arrayHeap[sizeOfArray-1];
+            T max = arrayHeap[1];
+            arrayHeap[1] = arrayHeap[sizeOfArray];
             sizeOfArray--;
-            buildMaxHeap(arrayHeap);
-            return arrayHeap[1];
+            maxHeapify(arrayHeap, sizeOfArray);
+            return max;
         }
     }
 
@@ -107,12 +108,12 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         for(int i = 1; i <= sizeOfArray; i++)
         {
             arrayHeap[i] = null;
-            --sizeOfArray;
         }
+        sizeOfArray = 0;
     }
 
     public void printArray(){
-        for(int i = 1; i == sizeOfArray; i++){
+        for(int i = 1; i <= sizeOfArray; i++){
             System.out.println(arrayHeap[i]);
         }
     }
