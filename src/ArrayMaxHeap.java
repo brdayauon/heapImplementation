@@ -4,8 +4,8 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
     private int sizeOfArray;
 
     public ArrayMaxHeap() {
-        arrayHeap = (T[])(new Object[25]);
-        sizeOfArray = 1;
+        arrayHeap = (T[])(new Comparable[25]);
+        sizeOfArray = 0;
     }
 
     public void maxHeapify(T[] array, int index) {
@@ -42,9 +42,9 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * @param newEntry An object to be added.
      */
     public void add(T newEntry) {
-      arrayHeap[sizeOfArray] = newEntry;
+      arrayHeap[sizeOfArray+1] = newEntry;
        sizeOfArray++;
-        buildMaxHeap(arrayHeap);
+        maxUpHeap(arrayHeap, sizeOfArray);
     }
 
     /**
@@ -108,6 +108,12 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         {
             arrayHeap[i] = null;
             --sizeOfArray;
+        }
+    }
+
+    public void printArray(){
+        for(int i = 1; i == sizeOfArray; i++){
+            System.out.println(arrayHeap[i]);
         }
     }
 
