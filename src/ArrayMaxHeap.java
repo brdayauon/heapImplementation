@@ -1,11 +1,11 @@
 public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInterface<T> {
 
-    private T[] array;
-    private int lastIndex;
+    private T[] arrayHeap;
     private int sizeOfArray;
 
     public ArrayMaxHeap() {
-        array = (T[]) (new Object[25]);
+        arrayHeap = (T[])(new Object[25]);
+        sizeOfArray = 1;
     }
 
     public void maxHeapify(T[] array, int index) {
@@ -42,11 +42,9 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * @param newEntry An object to be added.
      */
     public void add(T newEntry) {
-
-        int parent = (size-1)/2;
-
-        array[size + 1] = newEntry;
-        size++;
+      arrayHeap[sizeOfArray] = newEntry;
+       sizeOfArray++;
+        buildMaxHeap(arrayHeap);
     }
 
     /**
@@ -59,16 +57,17 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         if(isEmpty()) return null;
         else
         {
-            array[1] = array[size];
-            size--;
-            return array[1];
+            arrayHeap[1] = arrayHeap[sizeOfArray-1];
+            sizeOfArray--;
+            buildMaxHeap(arrayHeap);
+            return arrayHeap[1];
         }
     }
 
     private void swap( int firstIndex, int secondIndex){
-        T temp = array[firstIndex];
-        array[firstIndex] = array [secondIndex];
-        array[secondIndex] = temp;
+        T temp = arrayHeap[firstIndex];
+        arrayHeap[firstIndex] = arrayHeap [secondIndex];
+        arrayHeap[secondIndex] = temp;
     }
 
     /**
@@ -80,7 +79,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
     public T getMax() {
         if(isEmpty()) return null;
         else
-            return array[1];
+            return arrayHeap[1];
     }
 
     /**
@@ -89,7 +88,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * @return True if the heap is empty, or false otherwise.
      */
     public boolean isEmpty() {
-        return (size == 0);
+        return (sizeOfArray == 0);
     }
 
     /**
@@ -98,17 +97,17 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * @return The number of entries currently in the heap.
      */
     public int getSize() {
-        return size;
+        return sizeOfArray;
     }
 
     /**
      * Removes all entries from this heap.
      */
     public void clear() {
-        for(int i = 1; i <= size; i++)
+        for(int i = 1; i <= sizeOfArray; i++)
         {
-            array[i] = null;
-            --size;
+            arrayHeap[i] = null;
+            --sizeOfArray;
         }
     }
 
