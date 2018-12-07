@@ -14,13 +14,16 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
        int leftChildIndex = 2 * index;
        int rightChildIndex = (2 * index) + 1;
 
-        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[largest]) > 0))
-            largest = leftChildIndex;
-        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[largest]) > 0))
-        largest = rightChildIndex;
-        if (largest != index)
-        swap(index , largest);
+        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[largest]) > 0)){
+            largest = leftChildIndex;}
+
+        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[largest]) > 0)){
+        largest = rightChildIndex;}
+
+        if (largest != index) {
+            swap(index , largest);
         maxHeapify(array, largest);
+        }
     }
 
     private void maxUpHeap(T[] array, int index) {
@@ -46,7 +49,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
             increaseStacksz();
         }
       arrayHeap[sizeOfArray+1] = newEntry;
-       sizeOfArray++;
+        sizeOfArray++;
         maxUpHeap(arrayHeap, sizeOfArray);
     }
 
@@ -57,7 +60,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
      * if the heap is empty before the operation, null.
      */
     public T removeMax() {
-        T max = arrayHeap[1];
+        T max = null;
         if(isEmpty()) return null;
         else if (sizeOfArray == 1) {
             arrayHeap[1] = null;
@@ -65,6 +68,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
         }
         else
         {
+            max = arrayHeap[1];
             arrayHeap[1] = arrayHeap[sizeOfArray];
             sizeOfArray--;
             maxHeapify(arrayHeap, sizeOfArray);
@@ -124,7 +128,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
             System.out.println(arrayHeap[i]);
         }
     }
-    public void increaseStacksz(){
+    private void increaseStacksz(){
         T[] temp = (T[]) new Comparable [arrayHeap.length * 2];
 
         for (int i = 1; i <= sizeOfArray; i++){

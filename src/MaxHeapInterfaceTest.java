@@ -5,16 +5,26 @@ public class MaxHeapInterfaceTest {
 
         //if theres nothing in the array
         System.out.println("Test for an empty array, the isEmpty method should return true and it is: " + mh.isEmpty());
-        mh.add(68);
-        System.out.println("After adding 68, the  isEmpty method should return false and it is: " + mh.isEmpty());
-        mh.add(15);
-        mh.add(40);
+        mh.add(90);
+        mh.add(80);
+        mh.add(60);
+        mh.add(70);
+        mh.add(30);
+        mh.add(20);
+        mh.add(50);
         mh.add(10);
-        mh.add(8);
-        mh.add(35);
+        mh.add(40);
+        mh.add(85);
 
         System.out.println("Printing the array: ");
         ((ArrayMaxHeap<Integer>) mh).printArray();
+
+        System.out.println("The max number in this array is: " + mh.getMax());
+        mh.removeMax();
+
+        System.out.println("Printing the array: ");
+        ((ArrayMaxHeap<Integer>) mh).printArray();
+        System.out.println("The max number in this array is " + mh.getMax());
 
         if(mh.getSize() == 6) {System.out.println("The size of the arrayHeap is " + mh.getSize());}
 
@@ -32,6 +42,7 @@ public class MaxHeapInterfaceTest {
         System.out.println("Now removing the highest number in the array: " + mh.removeMax());
         System.out.println("After removing 4, the size of the heap should be 0 and it is: " + mh.getSize());
         ((ArrayMaxHeap<Integer>) mh).printArray();
+        System.out.println("getMax() should be null bc there is nothing in the array: " + mh.getMax());
 
       //  ((ArrayMaxHeap<Integer>) mh).printArray();
     }
