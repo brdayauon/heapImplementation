@@ -1,21 +1,25 @@
-import java.sql.SQLOutput;
-
 public class MaxHeapInterfaceTest {
     public static void main(String[] args) {
 
         MaxHeapInterface<Integer> mh = new ArrayMaxHeap<Integer>();
 
-        System.out.println(mh.isEmpty());
-        mh.add(4);
-        System.out.println(mh.isEmpty());
-        mh.add(5);
-        mh.add(3);
-        mh.add(24);
+        //if theres nothing in the array
+        System.out.println("Test for an empty array, the isEmpty method should return true and it is: " + mh.isEmpty());
+        mh.add(68);
+        System.out.println("After adding 68, the  isEmpty method should return false and it is: " + mh.isEmpty());
+        mh.add(15);
+        mh.add(40);
+        mh.add(10);
+        mh.add(8);
+        mh.add(35);
 
+        System.out.println("Printing the array: ");
         ((ArrayMaxHeap<Integer>) mh).printArray();
 
-        System.out.println("The size of the arrayHeap is " + mh.getSize());
+        if(mh.getSize() == 6) {System.out.println("The size of the arrayHeap is " + mh.getSize());}
+
         mh.clear();
+
         System.out.println("Using the clear method, after using getSize and getMax should be null");
         System.out.println("The max number in the arrayHeap is " + mh.getMax());
         System.out.println("The getSize in the arrayHeap is " + mh.getSize());

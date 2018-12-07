@@ -4,7 +4,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
     private int sizeOfArray;
 
     public ArrayMaxHeap() {
-        arrayHeap = (T[])(new Comparable[25]);
+        arrayHeap = (T[])(new Comparable[10]);
         sizeOfArray = 0;
     }
 
