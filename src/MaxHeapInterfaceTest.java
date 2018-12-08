@@ -22,6 +22,7 @@ public class MaxHeapInterfaceTest {
         System.out.println("The max number in this array is: " + mh.getMax());
         mh.removeMax();
 
+
         System.out.println("Printing the array: ");
         ((ArrayMaxHeap<Integer>) mh).printArray();
 
@@ -45,6 +46,6 @@ public class MaxHeapInterfaceTest {
         ((ArrayMaxHeap<Integer>) mh).printArray();
         System.out.println("getMax() should be null bc there is nothing in the array: " + mh.getMax());
 
-      //  ((ArrayMaxHeap<Integer>) mh).printArray();
+      //  ((ArrayMaxHeap<Integer>) mh).printArray(); //
     }
 }

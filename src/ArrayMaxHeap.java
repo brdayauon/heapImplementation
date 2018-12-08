@@ -130,6 +130,7 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
             System.out.println(arrayHeap[i]);
         }
     }
+
     private void increaseStacksz(){
         T[] temp = (T[]) new Comparable [arrayHeap.length * 2];
 

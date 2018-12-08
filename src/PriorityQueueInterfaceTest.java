@@ -5,7 +5,7 @@ public class PriorityQueueInterfaceTest {
         PriorityQueueInterface<Integer> pq = new HeapPriorityQueue<>();
 
         pq.add(15);
-        System.out.println("After adding 4, the  isEmpty method should return false and it is: " + pq.isEmpty());
+        System.out.println("After adding 15, the  isEmpty method should return false and it is: " + pq.isEmpty());
         pq.add(78);
         pq.add(30);
         pq.add(10);
@@ -15,7 +15,8 @@ public class PriorityQueueInterfaceTest {
         if(pq.peek() == 78) System.out.println("peek works");
         else System.out.println("peek does not work.");
         if(pq.remove() == 78) System.out.println("remove works");
-        pq.remove();
+
+       if(pq.remove() == 35) System.out.println("remove works for sure");
 
         System.out.println(pq.peek()); //peek does not work after removal
 
@@ -34,5 +35,6 @@ public class PriorityQueueInterfaceTest {
 
         if(pq.peek() == null) System.out.println("peek() works");
         else System.out.println("peek() does not work.");
+
     }
 }

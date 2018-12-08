@@ -59,11 +59,6 @@ public class HeapPriorityQueue<T extends Comparable<? super T>> implements Prior
         priorityheap.clear();
     }
 
-    public void printArray(){
-        for(int i = 1; i <= sizeOfArray; i++){
-            System.out.println(arrayHeap[i]);
-        }
-    }
     private void increaseStacksz(){
         T[] temp = (T[]) new Comparable [arrayHeap.length * 2];
 
