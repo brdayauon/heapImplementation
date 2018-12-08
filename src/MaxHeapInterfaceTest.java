@@ -24,9 +24,10 @@ public class MaxHeapInterfaceTest {
 
         System.out.println("Printing the array: ");
         ((ArrayMaxHeap<Integer>) mh).printArray();
+
         System.out.println("The max number in this array is " + mh.getMax());
 
-        if(mh.getSize() == 6) {System.out.println("The size of the arrayHeap is " + mh.getSize());}
+        if(mh.getSize() == 9) {System.out.println("The size of the arrayHeap is " + mh.getSize());}
 
         mh.clear();
 

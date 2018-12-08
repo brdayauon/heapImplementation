@@ -9,21 +9,22 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
     }
 
     public void maxHeapify(T[] array, int index) {
-        if (index > sizeOfArray / 2) return;
+        if (index > arrayHeap.length / 2) return;
+
        int largest = index;
        int leftChildIndex = 2 * index;
        int rightChildIndex = (2 * index) + 1;
 
-        if ((leftChildIndex <= sizeOfArray) && (array[leftChildIndex].compareTo(array[largest]) > 0)){
+        if ((leftChildIndex <= sizeOfArray) && array[leftChildIndex].compareTo(array[largest]) > 0){
             largest = leftChildIndex;}
-
-        if ((rightChildIndex <= sizeOfArray) && (array[rightChildIndex].compareTo(array[largest]) > 0)){
+        if ((rightChildIndex <= sizeOfArray) && array[rightChildIndex].compareTo(array[largest]) > 0){
         largest = rightChildIndex;}
 
         if (largest != index) {
             swap(index , largest);
-        maxHeapify(array, largest);
+            maxHeapify(array, largest);
         }
+
     }
 
     private void maxUpHeap(T[] array, int index) {
@@ -71,8 +72,9 @@ public class ArrayMaxHeap<T extends Comparable<? super T>> implements MaxHeapInt
             max = arrayHeap[1];
             arrayHeap[1] = arrayHeap[sizeOfArray];
             sizeOfArray--;
-            maxHeapify(arrayHeap, sizeOfArray);
+            maxHeapify(arrayHeap, 1);
         }
+
         return max;
     }
 
